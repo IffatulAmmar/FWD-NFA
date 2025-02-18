@@ -14,6 +14,7 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      text-align: justify;
     }
     .container {
       width: 800px;
@@ -21,6 +22,19 @@
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 10px 0 30px;
     }
     h1 {
       color: black;
@@ -34,12 +48,12 @@
     }
     .section-title {
       background: #ddd;
-      padding: 8px 40px; /* Padding kiri-kanan agar teks tidak menempel ke tepi */
+      padding: 8px 40px;
       font-weight: bold;
       font-size: 18px;
       margin-top: 20px;
-      margin-left: -20px; /* Menghapus jarak di kiri sesuai padding container */
-      margin-right: -20px; /* Menghapus jarak di kanan */
+      margin-left: -20px;
+      margin-right: -20px;
     }
     .content {
       padding: 10px;
@@ -59,18 +73,23 @@
 <body>
 
 <div class="container">
-  <h1>MUHAMMAD IFFATUL AMMAR</h1>
-  <p class="contact">
-    Beji, Depok | m.iffatul.a@gmail.com | 
-    <a href="https://www.linkedin.com/in/muhammad-iffatul-ammar" target="_blank">LinkedIn</a>
-  </p>
-  <p>
-    Saya seorang mahasiswa semester <strong>6</strong> jurusan Teknik Informatika dengan minat software engineer. 
-    Saya memiliki pemahaman tentang perancangan, pengembangan dan pemeliharaan perangkat lunak. 
-    Keahlian saya meliputi bahasa pemrograman PHP dengan beberapa project yang telah dikembangkan. 
-    Saya adalah individu yang siap untuk belajar lebih dalam bidang software.
-  </p>
-  
+  <div class="header">
+    <div>
+      <h1>MUHAMMAD IFFATUL AMMAR</h1>
+      <p class="contact">
+        Beji, Depok | m.iffatul.a@gmail.com | 
+        <a href="https://www.linkedin.com/in/muhammad-iffatul-ammar" target="_blank">LinkedIn</a>
+      </p>
+      <p>
+        Saya seorang mahasiswa semester <strong>6</strong> jurusan Teknik Informatika dengan minat software engineer. 
+        Saya memiliki pemahaman tentang perancangan, pengembangan, dan pemeliharaan perangkat lunak. 
+        Keahlian saya meliputi bahasa pemrograman PHP dengan beberapa proyek yang telah dikembangkan. 
+        Saya adalah individu yang siap untuk belajar lebih dalam bidang software.
+      </p>
+    </div>
+    <img src="FOTO.jpg" alt="Foto Muhammad Iffatul Ammar">
+  </div>
+
   <div class="section-title">PENDIDIKAN</div>
   <div class="content">
     <div class="education">
@@ -84,7 +103,7 @@
     </div>
     <p>Jurusan Teknik Komputer dan Jaringan</p>
   </div>
-  
+
   <div class="section-title">PENGALAMAN PROYEK</div>
   <div class="content">
     <p><strong>Pengembangan Website E-Commerce</strong></p>
@@ -124,7 +143,7 @@
       <li>Web Development (HTML, CSS, PHP)</li>
     </ul>
   </div>
-  
+
   <div class="section-title">PELATIHAN DAN SERTIFIKASI</div>
   <div class="content">
     <ul>
