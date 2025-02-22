@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+    padding: 10px;
+}
+
+/* Banner */
+frame[name="banner"] {
+    border: none;
+    background: url('banner.jpg') center/cover no-repeat;
+}
+
+/* Left Menu */
+frame[name="left"]  {
+    border: none;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+}
+
+/* Main Content */
+frame[name="main"] {
+    border: none;
+    background: #ffffff;
+    padding: 20px;
+}
+
+/* Right Content */
+frame[name="right"] {
+    border: none;
+    background: #23cc7d;
+    color: #000000;
+}
+
+/* Footer */
+frame[name="footer"] {
+    border: none;
+    background: #7a7878;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
