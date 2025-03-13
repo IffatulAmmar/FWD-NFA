@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung Luas Bangun Datar</title>
+</head>
+<body>
+    <h2>Menghitung Luas Persegi Panjang, Bujur Sangkar, dan Segitiga</h2>
+
+    <!-- Input untuk Persegi Panjang -->
+    <h3>Luas Persegi Panjang</h3>
+    Panjang: <input type="number" id="panjang" placeholder="Masukkan panjang (cm)"><br>
+    Lebar: <input type="number" id="lebar" placeholder="Masukkan lebar (cm)"><br>
+    <button onclick="hitungPersegiPanjang()">Hitung</button>
+    <p id="hasilPersegiPanjang"></p>
+
+    <!-- Input untuk Bujur Sangkar -->
+    <h3>Luas Bujur Sangkar</h3>
+    Sisi: <input type="number" id="sisi" placeholder="Masukkan sisi (cm)"><br>
+    <button onclick="hitungBujurSangkar()">Hitung</button>
+    <p id="hasilBujurSangkar"></p>
+
+    <!-- Input untuk Segitiga -->
+    <h3>Luas Segitiga</h3>
+    Alas: <input type="number" id="alas" placeholder="Masukkan alas (cm)"><br>
+    Tinggi: <input type="number" id="tinggi" placeholder="Masukkan tinggi (cm)"><br>
+    <button onclick="hitungSegitiga()">Hitung</button>
+    <p id="hasilSegitiga"></p>
+
+    <script>
+        // Fungsi menghitung luas persegi panjang
+        function hitungPersegiPanjang() {
+            const panjang = parseFloat(document.getElementById("panjang").value);
+            const lebar = parseFloat(document.getElementById("lebar").value);
+            const luas = panjang * lebar;
+            document.getElementById("hasilPersegiPanjang").innerHTML = "Luas Persegi Panjang: " + luas + " cm²";
+        }
+
+        // Fungsi menghitung luas bujur sangkar
+        function hitungBujurSangkar() {
+            const sisi = parseFloat(document.getElementById("sisi").value);
+            const luas = sisi * sisi;
+            document.getElementById("hasilBujurSangkar").innerHTML = "Luas Bujur Sangkar: " + luas + " cm²";
+        }
+
+        // Fungsi menghitung luas segitiga
+        function hitungSegitiga() {
+            const alas = parseFloat(document.getElementById("alas").value) ;
+            const tinggi = parseFloat(document.getElementById("tinggi").value);
+            const luas = 0.5 * alas * tinggi;
+            document.getElementById("hasilSegitiga").innerHTML = "Luas Segitiga: " + luas + " cm²";
+        }
+    </script>
+</body>
+</html>
