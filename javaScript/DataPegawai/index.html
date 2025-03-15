@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA PEGAWAI</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+            text-align: left;
+        }
+        thead {
+            background-color: #ddd;
+        }
+        tfoot {
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+        /* Styling untuk form input */
+        form {
+            margin: 20px 0;
+            padding: 40px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 300px;
+        }
+        form input, form select, form button {
+            margin: 5px 0;
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>DATA PEGAWAI</h2>
+
+    <!-- Form Input Data Pegawai -->
+    <h3>Tambah Data Pegawai</h3>
+    <form>
+        Nama: <input type="text" id="nama" placeholder="Masukkan nama"><br>
+        Umur: <input type="number" id="umur" placeholder="Masukkan umur"><br>
+        Jabatan: <select id="jabatan">
+            <option value="Manajer">Manajer</option>
+            <option value="Asisten Manajer">Asisten Manajer</option>
+            <option value="Staff">Staff</option>
+        </select><br>
+        Status: <select id="status">
+            <option value="Menikah">Menikah</option>
+            <option value="Belum Menikah">Belum Menikah</option>
+        </select><br>
+        <button type="button" onclick="tambahDataPegawai()">Tambah Pegawai</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Pegawai</th>
+                <th>Umur</th>
+                <th>Jabatan</th>
+                <th>Status</th>
+                <th>Gaji Pokok</th>
+                <th>Tunjangan Jabatan</th>
+                <th>BPJS</th>
+                <th>Tunjangan Keluarga</th>
+                <th>Total Gaji</th>
+            </tr>
+        </thead>
+        <tbody id="dataPegawai"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8">Total Gaji Keseluruhan</td>
+                <td id="totalKeseluruhan">Rp 0</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        let totalKeseluruhan = 0;
+
+        function tambahDataPegawai(nama, umur, jabatan, status) {
+            if (!nama) nama = document.getElementById("nama").value;
+            if (!umur) umur = document.getElementById("umur").value;
+            if (!jabatan) jabatan = document.getElementById("jabatan").value;
+            if (!status) status = document.getElementById("status").value;
+
+            let gapok = jabatan === "Manajer" ? 15000000 : jabatan === "Asisten Manajer" ? 10000000 : 5000000;
+            let tunjanganJabatan = gapok * 0.15;
+            let bpjs = gapok * 0.10;
+            let tunjanganKeluarga = status === "Menikah" ? gapok * 0.20 : 0;
+            let totalGaji = gapok + tunjanganJabatan + tunjanganKeluarga - bpjs;
+
+            totalKeseluruhan += totalGaji;
+
+            const row = `<tr>
+                <td>${nama}</td>
+                <td>${umur} Tahun</td>
+                <td>${jabatan}</td>
+                <td>${status}</td>
+                <td>Rp ${gapok.toLocaleString()}</td>
+                <td>Rp ${tunjanganJabatan.toLocaleString()}</td>
+                <td>Rp ${bpjs.toLocaleString()}</td>
+                <td>Rp ${tunjanganKeluarga.toLocaleString()}</td>
+                <td>Rp ${totalGaji.toLocaleString()}</td>
+            </tr>`;
+
+            document.getElementById("dataPegawai").insertAdjacentHTML("beforeend", row);
+            document.getElementById("totalKeseluruhan").innerHTML = "Rp " + totalKeseluruhan.toLocaleString();
+
+            // Mengosongkan input setelah ditambahkan
+            document.getElementById("nama").value = "";
+            document.getElementById("umur").value = "";
+            document.getElementById("jabatan").value = "Manajer";
+            document.getElementById("status").value = "Menikah";
+        }
+
+        // Menambahkan data Dodi Prayodi saat halaman dimuat
+        window.onload = function() {
+            tambahDataPegawai("Dodi Prayodi", 25, "Manajer", "Menikah");
+        }
+    </script>
+</body>
+</html>
