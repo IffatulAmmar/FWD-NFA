@@ -1,59 +1,61 @@
 import { users as initialUsers } from "./data.js";
 
-// Buat salinan array supaya bisa diubah
+// Gunakan `let` agar bisa diubah
 let users = [...initialUsers];
 
-// Fungsi untuk menampilkan data di tabel
-function viewUsers() {
+// Fungsi untuk menampilkan data
+function index() {
     const tableBody = document.getElementById("userTableBody");
-    tableBody.innerHTML = users.map((user, index) => `
+    tableBody.innerHTML = users.map((user, i) => `
         <tr>
-            <td>${index + 1}</td>
+            <td>${i + 1}</td>
             <td>${user.nama}</td>
             <td>${user.umur}</td>
             <td>${user.alamat}</td>
             <td>${user.email}</td>
-            <td><button class="delete-btn" data-index="${index}">Hapus</button></td>
+            <td><button class="delete-btn" data-index="${i}">Hapus</button></td>
         </tr>
     `).join('');
 }
 
 // Fungsi untuk menambah pengguna
-function addUser(nama, umur, alamat, email) {
-    if (!nama || !umur || !alamat || !email) {
+function store(user) {
+    if (!user.nama || !user.umur || !user.alamat || !user.email) {
         alert("Semua field harus diisi!");
         return;
     }
 
-    users.push({ nama, umur, alamat, email });
-    viewUsers(); // Perbarui tampilan
+    users.push(user);
+    index(); // Perbarui tampilan tabel
 }
 
 // Fungsi untuk menghapus pengguna
-function deleteUser(index) {
-    users.splice(index, 1);
-    viewUsers(); // Perbarui tampilan
+function destroy(userIndex) {
+    users = users.filter((_, index) => index !== userIndex); // Filter array
+    index(); // Perbarui tampilan tabel
 }
 
-// Event listener untuk tambah pengguna
-document.getElementById("userForm")?.addEventListener("submit", function(event) {
+// Event listener untuk form submit (Menambah pengguna)
+document.getElementById("userForm").addEventListener("submit", function(event) {
     event.preventDefault();
-    const nama = document.getElementById("nama").value.trim();
-    const umur = document.getElementById("umur").value.trim();
-    const alamat = document.getElementById("alamat").value.trim();
-    const email = document.getElementById("email").value.trim();
+    const user = {
+        nama: document.getElementById("nama").value.trim(),
+        umur: document.getElementById("umur").value.trim(),
+        alamat: document.getElementById("alamat").value.trim(),
+        email: document.getElementById("email").value.trim()
+    };
 
-    addUser(nama, umur, alamat, email);
+    store(user);
     document.getElementById("userForm").reset();
 });
 
-// Event delegation untuk menangani hapus pengguna
-document.getElementById("userTableBody")?.addEventListener("click", function(event) {
+// Event delegation untuk tombol hapus
+document.getElementById("userTableBody").addEventListener("click", function(event) {
     if (event.target.classList.contains("delete-btn")) {
-        const index = event.target.getAttribute("data-index");
-        deleteUser(Number(index));
+        const userIndex = parseInt(event.target.getAttribute("data-index"), 10);
+        destroy(userIndex);
     }
 });
 
-// Tampilkan data saat pertama kali halaman dimuat
-viewUsers();
+// Render data saat pertama kali halaman dimuat
+index();
