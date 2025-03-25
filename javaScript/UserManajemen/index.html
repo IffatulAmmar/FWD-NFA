@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Data Pengguna</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Manajemen Data Pengguna</h2>
+
+        <form id="userForm">
+            <input type="text" id="nama" placeholder="Nama" required>
+            <input type="number" id="umur" placeholder="Umur" required>
+            <input type="text" id="alamat" placeholder="Alamat" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <button type="submit">Tambah</button>
+        </form>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Umur</th>
+                    <th>Alamat</th>
+                    <th>Email</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody"></tbody>
+        </table>
+        
+    </div>
+
+    <script type="module" src="controller.js"></script>
+</body>
+</html>
