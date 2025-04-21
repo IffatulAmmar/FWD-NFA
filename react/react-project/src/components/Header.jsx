@@ -1,18 +1,25 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';  // Ganti Link dengan NavLink
 
 function Header() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand as={Link} to="/">My Portofolio</Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/">My Portfolio</Navbar.Brand>  {/* Gunakan NavLink untuk penandaan aktif */}
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/team">Team</Nav.Link>
-            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+            {/* Gunakan NavLink dan aktifkan styling untuk link aktif */}
+            <Nav.Link as={NavLink} to="/" exact activeClassName="active-link">
+              Home
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/team" activeClassName="active-link">
+              Team
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/contact" activeClassName="active-link">
+              Contact
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
